@@ -9,7 +9,8 @@ python manage.py runserver
 ## How to migrate:
 
 ```sh
-python manage.py makemigrations [notes]
+python manage.py makemigrations
+python manage.py migrate
 ```
 
 ## How to add new app:

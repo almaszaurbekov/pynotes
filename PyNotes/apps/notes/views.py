@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, Http404
 
-from .models import Note
+from .models import *
 
 # Create your views here.
 def index(request, user_id):
