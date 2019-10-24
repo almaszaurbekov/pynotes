@@ -1,23 +1,23 @@
 from django.db import models
 
 # Create your models here.
-# class User(models.Model):
-#     login = models.CharField('Логин', max_length=10)
-#     password = models.CharField('Пароль', max_length=20)
-
-#     def __str__(self):
-#         return self.login
-
-#     class Meta:
-#         verbose_name = 'Пользователь'
-#         verbose_name_plural = 'Пользователи'
-
-class Note(models.Model):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = models.TextField('Заметка', max_length=255)
+class Category(models.Model):
+    name = models.CharField('Название', max_length=30, default=None)
 
     def __str__(self):
-        return self.text
+        return self.name
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+
+class Note(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None)
+    title = models.CharField('Титул', max_length=30, default=None)
+    text = models.TextField('Заметка', default=None)
+
+    def __str__(self):
+        return self.title
 
     class Meta:
         verbose_name = 'Заметка'
