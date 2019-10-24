@@ -9,5 +9,6 @@ urlpatterns = [
     path('notes/', include('notes.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('register', views.register, name='register')
+    path('register', views.register, name='register'),
+    path('notes/<int:id>', include('notes.urls')),
 ]

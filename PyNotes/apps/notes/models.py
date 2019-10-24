@@ -16,6 +16,7 @@ class Color(models.Model):
 class Category(models.Model):
     name = models.CharField('Название', max_length=30, default=None)
     color = models.ForeignKey(Color, on_delete=models.CASCADE, default=None)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
         return self.name
@@ -29,7 +30,6 @@ class Note(models.Model):
     text = models.TextField('Заметка', default=None)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-
 
     def __str__(self):
         return self.title

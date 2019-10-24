@@ -5,7 +5,11 @@ from .models import *
 
 # Create your views here.
 @login_required
-def index(request):
-    user_id = request.user.id
-    notes = Note.objects.filter(user=user_id)
-    return render(request, 'notes/index.html', { 'notes' : notes })
+def index(request, id=None):
+    if(id is None):
+        user_id = request.user.id
+        categories = Category.objects.filter(user=user_id)
+        return render(request, 'notes/index.html', { 'categories' : categories })
+    else:
+        notes = Note.objects.filter(category=id)
+        return render(request, 'notes/details.html', { 'notes' : notes })

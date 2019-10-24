@@ -25,13 +25,13 @@ if __name__ == '__main__':
     # conn = sqlite3.connect("db.sqlite3") # или :memory: чтобы сохранить в RAM
     # cursor = conn.cursor()
 
-    # cursor.execute('SELECT * FROM notes_category')
+    # cursor.execute('SELECT * FROM notes_color')
 
     # print(cursor.fetchall())
 
-    # cursor.execute('DELETE FROM notes_category')
+    # cursor.execute('DELETE FROM notes_color')
 
-    # cursor.execute('SELECT * FROM notes_category')
+    # cursor.execute('SELECT * FROM notes_color')
 
     # conn.commit();
 

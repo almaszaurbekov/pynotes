@@ -2,13 +2,30 @@
 {% load static %}
 
 {% block content %}
+<style>
+    .fx-col{
+        margin-bottom:20px;
+        color:white;
+        padding:20px;
+        border:3px solid white;
+        transition:all ease 0.3s;
+    }
+    .fx-col:hover{
+        padding-left:40px;
+        color:white;
+        text-decoration:none;
+        text-transform: none;
+    }
+</style>
 <div class="container" style="padding-top:50px;padding-bottom:50px;">
-    {% for note in notes %}
-        <hr>
-        <h3>{{ note.id }}: {{ note.title }}</h3>
-        <h6>{{ note.text }}</h6>
-        <h6>{{ note.category }}</h6>
-        <h6>{{ note.user }}</h6>
-    {% endfor %}
+    <div class="row">
+        {% for category in categories %}
+            <a href="{{ category.id }}" class="col-md-4 fx-col" style="background:{{ category.color.rgb }}">
+                <h3>{{ category.id }}: {{ category.name }}</h3>
+                <h6>COLOR: {{ category.color.rgb }}</h6>
+                <h6>USER: {{ category.user }}</h6>
+            </a>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

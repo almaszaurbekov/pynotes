@@ -1,0 +1,39 @@
+{% extends "notes/_layout.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .fx-col{
+        padding:20px;
+        border-radius:15px;
+        color:white;
+        margin-bottom:10px;
+    }
+</style>
+<div class="container" style="padding-top:50px;padding-bottom:50px;">
+    <p style="margin-bottom:20px">
+        <a href="/notes" class="btn btn-primary"><i class="fas fa-arrow-circle-left"></i> Вернуться</a>
+        <a href="#" class="btn btn-success pull-right"><i class="fas fa-plus-circle"></i> Новая запись</a>
+    </p>
+    {% with notes|first as note %}
+        <h1>{{note.category}}</h1>
+    {% endwith %}
+    {% if not notes%}
+        <h1>No notes :(</h1>
+    {% endif %}
+    <hr>
+    <div class="row">
+        {% for note in notes %}
+            <div class="col-md-12 fx-col bg-dark">
+                <div class="bg-warning" style="margin-top:-10px;">
+                    <a href="#" style="font-size:30px" class="btn-link text-danger pull-right mr-2"><i class="fas fa-minus-square"></i></a>
+                    <a href="#" style="font-size:30px" class="btn-link text-primary pull-right mr-2"><i class="fas fa-pen-square"></i></a>
+                </div>
+                <h3>{{ note.title }}</h3>
+                <hr>
+                <h6>{{ note.text }}</h6>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
