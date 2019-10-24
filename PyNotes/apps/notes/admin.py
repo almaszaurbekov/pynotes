@@ -4,3 +4,4 @@ from .models import *
 
 admin.site.register(Category)
 admin.site.register(Note)
+admin.site.register(Color)

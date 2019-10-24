@@ -19,3 +19,20 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+    # import sqlite3
+
+    # conn = sqlite3.connect("db.sqlite3") # или :memory: чтобы сохранить в RAM
+    # cursor = conn.cursor()
+
+    # cursor.execute('SELECT * FROM notes_category')
+
+    # print(cursor.fetchall())
+
+    # cursor.execute('DELETE FROM notes_category')
+
+    # cursor.execute('SELECT * FROM notes_category')
+
+    # conn.commit();
+
+    # print(cursor.fetchall())
