@@ -1,0 +1,151 @@
+{% extends "_layout.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+  .card{
+    margin-bottom: 20px
+  }
+</style>
+<section>
+  <div class="jumbotron text-center">
+    <div class="container">
+      <a href="/" class="lang-logo">
+        <img src="https://image.flaticon.com/icons/svg/1822/1822899.svg">
+      </a>
+      <h1>Онлайн заметки</h1>
+      <p>Делай удобные для себя заметки в любом месте и в любое время. Фильтруй их по темам, обводи их цветами и не бойся оставлять ссылки, логины и пароли, так как мы гарантируем <b style="color:#339AF0;">100%</b> безопасность.</p>
+      <a href="/" class="btn btn-primary">Начать работать с PyNotes</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="alert alert-primary text-center" role="alert">
+      <b>Редактирование и добавление</b> новых заметок доступно на сегодняшний момент только <b>на компьютере</b>. В ближайшее время на <b>мобильных устройствах</b> этот функционал тоже будет доступен.
+    </div>
+    <hr>
+    <h3 style="margin-top:20px;margin-bottom:30px"><b><i class="fas fa-info-circle" style="color: #339AF0;"></i> Как это выглядит</b></h3>
+    <div class="row">
+      <div class="col-lg-4 col-mg-4">
+        <div class="accordion">
+          <div class="card">
+            <div class="card-header" style="background: #532f8c;">
+              <h2 class="mb-0">
+                <h5 class="mb-0 text-light">
+                <button class="btn btn-default pull-right" style="background: #845ac7; border-color: #845ac7" 
+                type="button" data-toggle="collapse" data-target="#angular">
+                  <i class="fas fa-arrows-alt-v"></i>
+                </button>
+                <p style="position:absolute;margin-top:5px">Angular 8</p>
+              </h5>
+              </h2>
+            </div>
+
+            <div id="angular" class="collapse show">
+              <div class="card-body">
+                <p><b>How to create project:</b></p>
+                <pre class="bg-light text-danger"><code>
+  npm install -g @angular/cli
+  ng new ng-example
+  cd ng-example 
+                  </code></pre>
+                <p><b>How to run project:</b></p>
+                <pre class="bg-light text-danger"> <code>ng serve</code> </pre>
+                <div style="margin-top:20px">
+                  <a href="#" class="text-primary">#basic</a>
+                  <a href="#" class="text-primary">#angular</a>
+                  <a href="#" class="text-primary">#code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-mg-4">
+        <div class="accordion">
+          <div class="card">
+            <div class="card-header" style="background: #532f8c;">
+              <h5 class="mb-0 text-light">
+                <button class="btn btn-default pull-right" style="background: #845ac7; border-color: #845ac7" 
+                type="button" data-toggle="collapse" data-target="#data">
+                  <i class="fas fa-arrows-alt-v"></i>
+                </button>
+                <p style="position:absolute;margin-top:5px">Data Science</p>
+              </h5>
+            </div>
+
+            <div id="data" class="collapse show">
+              <div class="card-body">
+                <a href="https://github.com/marketplace/review-notebook-app">Review Notebook App</a>
+                <hr>
+                <img src="https://marketplace-screenshots.githubusercontent.com/2627/53ccfd00-3f99-11e9-86bd-cb7d0ba72131?auto=webp&format=jpeg&width=670" alt="" width="100%">
+                <div style="margin-top:20px">
+                  <a href="#" class="text-primary">#ml</a>
+                  <a href="#" class="text-primary">#datascience</a>
+                  <a href="#" class="text-primary">#github</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-mg-4">
+        <div class="accordion">
+          <div class="card">
+            <div class="card-header" style="background: #532f8c;">
+              <h5 class="mb-0 text-light">
+                <button class="btn btn-default pull-right" style="background: #845ac7; border-color: #845ac7" 
+                type="button" data-toggle="collapse" data-target="#async">
+                  <i class="fas fa-arrows-alt-v"></i>
+                </button>
+                <p style="position:absolute;margin-top:5px">Async TypeScript</p>
+              </h5>
+            </div>
+
+            <div id="async" class="collapse show">
+              <div class="card-body">
+                <p><b>Simplify Async Callback Functions using Async/Await.</b></p>
+                <p>Lets see how we can write a <code>Promise</code> and use it in <code>async await</code>. This method helps simplify the code inside functions like <code>setTimeout.</code></p>
+                <p>Create a new file inside <code>src</code> folder called <code>index.ts</code>. We’ll first write a function called <code>start</code> that takes a <code>callback</code> and calls it using the <code>setTimeoutfunction.</code></p>
+                <!-- <pre class="bg-light text-danger">
+                  <code style="font-size:12px">
+  const start = callback => {
+    setTimeout(() => {
+      callback('Hello');
+      setTimeout(() => {
+        callback('And Welcome');
+        setTimeout(() => {
+          callback('To Async Await Using TypeScript');
+        }, 1000);
+      }, 1000);
+    }, 1000);
+  };
+  start(text => console.log(text));
+                  </code>
+                </pre> -->
+                <div style="margin-top:20px">
+                  <a href="#" class="text-primary">#ts</a>
+                  <a href="#" class="text-primary">#async</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12">
+        <h3 style="margin-top:20px;margin-bottom:30px"><b><i class="fas fa-check-circle" style="color: #339AF0;"></i> Особенности приложения</b></h3>
+        <p>Добавляйте новые заметки так, как удобно для вас. Вы можете для вашего собственного удобства:</p>
+        <ul>
+          <li>Изменять цвет заметок</li>
+          <li>Изменять размер и шрифт текста</li>
+          <li>Добавлять | Редакитровать ссылки</li>
+          <li>Добавлять | Редакитровать фотоссылки</li>
+          <li>Добавлять | Редакитровать строки кода</li>
+          <li>Помечать свои заметки, как "Важное", "Интересное" и т.д.</li>
+        </ul>
+        <p>Вы никогда не заблудитесь в своих заметках, так как для вас будет доступна функция <b>фильтрации</b>. Разделите свои заметки на категории и отмечайте их хэштегами, чтобы улучшить скорость поиска.</p>
+        <a href="/" class="btn btn-primary"><i class="fas fa-star"></i> Начать работать с PyNotes</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

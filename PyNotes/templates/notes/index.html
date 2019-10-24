@@ -1,0 +1,4 @@
+{% for note in notes %}
+  <a href="{% url 'details' note.id %}">{{note.text}}</a>
+  <hr>
+{% endfor %}
