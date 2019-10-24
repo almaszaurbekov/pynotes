@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Color(models.Model):
@@ -27,6 +28,8 @@ class Note(models.Model):
     title = models.CharField('Титул', max_length=30, default=None)
     text = models.TextField('Заметка', default=None)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+
 
     def __str__(self):
         return self.title

@@ -6,4 +6,6 @@ from .models import *
 # Create your views here.
 @login_required
 def index(request):
-    return render(request, 'notes/index.html')
+    user_id = request.user.id
+    notes = Note.objects.filter(user=user_id)
+    return render(request, 'notes/index.html', { 'notes' : notes })

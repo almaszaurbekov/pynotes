@@ -3,6 +3,12 @@
 
 {% block content %}
 <div class="container" style="padding-top:50px;padding-bottom:50px;">
-    <h3>HEllo world!</h3>
+    {% for note in notes %}
+        <hr>
+        <h3>{{ note.id }}: {{ note.title }}</h3>
+        <h6>{{ note.text }}</h6>
+        <h6>{{ note.category }}</h6>
+        <h6>{{ note.user }}</h6>
+    {% endfor %}
 </div>
 {% endblock %}
