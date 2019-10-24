@@ -1,1 +1,1 @@
-"# PyNotes - Personal Notes" 
+# PyNotes - Personal Notes"
