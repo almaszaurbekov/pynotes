@@ -55,17 +55,26 @@
   <div class="container">
     <ul class="nav navbar-nav">
       <li class="active">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           <i class="fas fa-cloud" style="color: #339AF0;"></i>
            PyNotes
         </a>
       </li>
     </ul>
+    {% if not user.is_authenticated %}
     <ul class="nav navbar-nav navbar-right">
       <li class="navbar-right">
-        <a href="#" class="btn btn-light text-primary"><i class="fas fa-user-circle"></i> Войти</a>
+        <a href="/accounts/login" class="btn btn-light text-primary"><i class="fas fa-user-circle"></i> Войти</a>
       </li>
     </ul>
+    {% else %}
+    <ul class="nav navbar-nav navbar-right">
+      <li class="navbar-right">
+        <a href="/notes" class="btn btn-light text-primary"><i class="fas fa-clipboard"></i> Мои записи</a>
+        <a href="{% url 'logout' %}" class="btn btn-light text-dark"><i class="fas fa-sign-out-alt"></i> Выйти</a>
+      </li>
+    </ul>
+    {% endif %}
   </div>
 </nav>
 {% block content %}{% endblock %}

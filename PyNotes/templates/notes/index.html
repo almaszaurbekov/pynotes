@@ -1,4 +1,8 @@
-{% for note in notes %}
-  <a href="{% url 'details' note.id %}">{{note.text}}</a>
-  <hr>
-{% endfor %}
+{% extends "notes/_layout.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container" style="padding-top:50px;padding-bottom:50px;">
+    <h3>HEllo world!</h3>
+</div>
+{% endblock %}
