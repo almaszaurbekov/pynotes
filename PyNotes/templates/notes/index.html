@@ -18,6 +18,9 @@
     }
 </style>
 <div class="container" style="padding-top:50px;padding-bottom:50px;">
+    <a href="#" class="btn btn-success pull-right"> Создать</a>
+    <h2>Categories:</h2>
+    <hr>
     <div class="row">
         {% for category in categories %}
             <a href="{{ category.id }}" class="col-md-4 fx-col" style="background:{{ category.color.rgb }}">

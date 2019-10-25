@@ -9,7 +9,7 @@ def index(request, id=None):
     if(id is None):
         user_id = request.user.id
         categories = Category.objects.filter(user=user_id)
-        return render(request, 'notes/index.html', { 'categories' : categories })
+        return render(request, 'notes/index.html', { 'categories' : categories, 'is_quill' : False })
     else:
         notes = Note.objects.filter(category=id)
-        return render(request, 'notes/details.html', { 'notes' : notes })
+        return render(request, 'notes/details.html', { 'notes' : notes, 'is_quill' : True })
