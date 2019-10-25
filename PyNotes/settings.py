@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
 SECRET_KEY = 'y9v)w_v-6g3g$-ozo89@4!7g43rfp-_bfgh$hp3a3hap*-a0ux'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['py-notes.herokuapp.com']
 
