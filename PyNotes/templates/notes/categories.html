@@ -1,10 +1,9 @@
 {% extends "notes/_layout.html" %}
 {% load static %}
-
 {% block content %}
 <style>
     .fx-col{
-        margin-bottom:20px;
+        margin-bottom:10px;
         color:white;
         padding:20px;
         border:3px solid white;
@@ -17,13 +16,20 @@
         text-transform: none;
     }
 </style>
-<div class="container" style="padding-top:50px;padding-bottom:50px;">
-    <a href="#" class="btn btn-success pull-right"> Создать</a>
-    <h2>Categories:</h2>
+<div class="container" style="padding-top:20px;padding-bottom:50px;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item active" aria-current="page"></li>
+        </ol>
+    </nav>
     <hr>
     <div class="row">
+        <div class="col-md-12 text-right mb-2">
+            <a href="{% url 'createCategory' %}" class="btn btn-success"> Новая категория</a>
+        </div>
         {% for category in categories %}
-            <a href="{{ category.id }}" class="col-md-4 fx-col" style="background:{{ category.color.rgb }}">
+            <a href="{% url 'categoryById' category_id=category.id %}" class="col-md-4 fx-col" style="background:{{ category.color.rgb }}">
                 <h3>{{ category.id }}: {{ category.name }}</h3>
                 <h6>COLOR: {{ category.color.rgb }}</h6>
                 <h6>USER: {{ category.user }}</h6>

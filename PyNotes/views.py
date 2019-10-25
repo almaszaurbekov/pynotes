@@ -17,7 +17,7 @@ def register(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('index')
+            return redirect('categories')
     else:
         form = UserCreationForm()
     context = { 'form' : form }

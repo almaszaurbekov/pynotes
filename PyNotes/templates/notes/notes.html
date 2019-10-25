@@ -1,0 +1,43 @@
+{% extends "notes/_layout.html" %}
+{% load static %}
+{% block content %}
+<style>
+    .fx-col{
+        margin-bottom:20px;
+        color:white;
+        padding:20px;
+        border:3px solid white;
+        transition:all ease 0.3s;
+    }
+    .fx-col:hover{
+        padding-left:40px;
+        color:white;
+        text-decoration:none;
+        text-transform: none;
+    }
+</style>
+<div class="container" style="padding-top:20px;padding-bottom:50px;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'categories' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ category }}</li>
+            <li class="breadcrumb-item active" aria-current="page"></li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="row">
+        <div class="col-md-12 text-right mb-2">
+            <a href="#" class="btn btn-danger"> Удалить категорию</a>
+            <a href="{% url 'createNote' category_id=category.id %}" class="btn btn-success"> Новая заметка</a>
+        </div>
+        {% for note in notes %}
+            <a href="{% url 'noteById' category_id=note.category.id note_id=note.id is_success=None %}" class="col-md-4 fx-col" style="background:{{ category.color.rgb }}">
+                <h3>{{ note.id }}: {{ note.title }}</h3>
+                <hr>
+                <h6>Category: {{ category }}</h6>
+                <h6>Color: {{ category.color.rgb }}</h6>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

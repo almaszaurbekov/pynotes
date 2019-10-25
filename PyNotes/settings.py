@@ -112,5 +112,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-LOGIN_REDIRECT_URL = '../../notes/'
+LOGIN_REDIRECT_URL = '../../categories/'
 LOGOUT_REDIRECT_URL = '../../'

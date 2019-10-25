@@ -26,7 +26,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li class="navbar-right">
-            <a href="../accounts/login" class="btn btn-light text-primary"><i class="fas fa-user-circle"></i> Войти</a>
+            <a href="{% url 'login' %}" class="btn btn-light text-primary"><i class="fas fa-user-circle"></i> Войти</a>
         </li>
     </ul>
   </div>
@@ -55,7 +55,7 @@
             </form>
             {% else %}
               <h4>Вы уже в системе</h4>
-              <a href="../notes">Перейти к моим записям</a>
+              <a href="{% url 'categories' %}">Перейти к моим записям</a>
             {% endif %}
         </div>
         <div class="col-md-4"></div>

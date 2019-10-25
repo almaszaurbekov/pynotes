@@ -1,1 +1,54 @@
-Create Category
+{% extends "notes/_layout.html" %}
+{% load static %}
+{% block content %}
+<div class="container" style="padding-top:50px;padding-bottom:50px;">
+    <style>
+        .fx-color-box{
+            width:15px;
+            height:15px;
+            border-radius:50%;
+            float: left;
+            background:#532f8c;
+            margin-right:5px;
+            margin-top:5px;
+        }
+    </style>
+    <form action="{% url 'createCategory' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-4"></div>
+            <div class="form-group col-md-4">
+                <label for="name">Название:</label>
+                <input name="name" type="text" class="form-control" required>
+                <br>
+                <label for="color"><div class="fx-color-box"></div> Цвет:</label>
+                <select name="color" class="form-control">
+                    {% for color in colors %}
+                        <option data-color="{{ color.rgb }}" value="{{ color.id }}">{{ color }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <label for="user">Пользователь:</label>
+                <select name="user" class="form-control" readonly>
+                    <option value="{{ user.id }}">{{ user }}</option>
+                </select>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="{% url 'categories' %}" class="btn btn-primary form-control mb-2">Вернуться</a>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="submit" value="Создать" class="btn btn-success form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-4"></div>
+        </div>
+    </form>
+</div>
+<script>
+        $("select[name='color']" ).change(function() {
+            $('.fx-color-box').css("background", $("select[name='color'] option:selected").attr("data-color"));
+        });
+</script>
+{% endblock %}

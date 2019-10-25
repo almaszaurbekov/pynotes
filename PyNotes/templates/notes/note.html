@@ -1,0 +1,103 @@
+{% extends "notes/_layout.html" %}
+{% load static %}
+{% block content %}
+<style>
+    .fx-col{
+        padding:20px;
+        border-radius:15px;
+        color:white;
+        margin-bottom:10px;
+    }
+    #editor-container{
+        width:100%;
+        min-height:500px;
+        height:auto;
+        border: 3px solid rgba(0,0,0,.5);
+        font-size:20px;
+    }
+    .ql-toolbar{
+        border: 3px solid rgba(0,0,0,.5) !important;
+        border-bottom: none !important;
+    }
+    .fx-alert{
+        position: absolute;
+        top:0;
+        width:100%;
+    }
+</style>
+{% if is_success == "True" %}
+<div class="alert alert-success fx-alert" role="alert">
+    Note was successfully updated!
+</div>
+{% endif %}
+<div class="container" style="padding-top:50px;padding-bottom:50px;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'categories' %}">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="{% url 'categoryById' category_id=category.id %}">{{ category }}</a></li>
+            <li class="breadcrumb-item" aria-current="page">{{ note }}</li>
+        </ol>
+    </nav>
+    <hr>
+    <div id="form-container" class="container-fluid">
+        <form action="{% url 'quillText' %}" method="POST">
+            {% csrf_token %}
+            <div class="row form-group">
+                <div class="col-md-12 text-right mb-2">
+                    <a href="#" class="btn btn-danger">Удалить</a>
+                    <button id="quill-btn" class="btn btn-success" type="submit">Сохранить</button>
+                </div>
+                <input type="hidden" class="quill-data" name="quillData">
+                <input type="hidden" name="note" value="{{ note.id }}">
+                <input type="hidden" name="category" value="{{ category.id }}">
+                <div id="editor-container"></div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+    var toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike', 'link'],        // toggled buttons
+        ['blockquote', 'code-block'],
+        ['video', 'formula', 'image'],
+        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+        [{ 'direction': 'rtl' }],                         // text direction
+      
+        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      
+        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+        [{ 'font': [] }],
+        [{ 'align': [] }],
+      
+        ['clean']                                         // remove formatting button
+    ];
+    var quill = new Quill('#editor-container', {
+        modules: {
+            toolbar: toolbarOptions
+        },
+        placeholder: 'Compose an epic...',
+        theme: 'snow'
+    });
+
+    var decodeHTML = function (html) {
+        var txt = document.createElement('textarea');
+        txt.innerHTML = html;
+        return txt.value;
+    };
+
+    quill.root.innerHTML = decodeHTML(`{{note.text}}`);
+
+    $('#quill-btn').click(function(){
+        var quillHtml = quill.root.innerHTML.trim();
+        $('.quill-data').val(quillHtml);
+    });
+
+    $(".fx-alert").fadeToggle(5000);
+    
+</script>
+{% endblock %}

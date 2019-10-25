@@ -1,0 +1,36 @@
+{% extends "notes/_layout.html" %}
+{% load static %}
+{% block content %}
+<div class="container" style="padding-top:50px;padding-bottom:50px;">
+    <form action="{% url 'createNote' category_id=category.id %}" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-4"></div>
+            <div class="form-group col-md-4">
+                <label for="title">Титул:</label>
+                <input name="title" type="text" class="form-control" required>
+                <br>
+                <label for="category">Категория:</label>
+                <select name="category" class="form-control" readonly>
+                    <option value="{{ category.id }}">{{ category }}</option>
+                </select>
+                <br>
+                <label for="user">Пользователь:</label>
+                <select name="user" class="form-control" readonly>
+                    <option value="{{ user.id }}">{{ user }}</option>
+                </select>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="{% url 'categoryById' category_id=category.id %}" class="btn btn-primary form-control mb-2">Вернуться</a>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="submit" value="Создать" class="btn btn-success form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-4"></div>
+        </div>
+    </form>
+</div>
+{% endblock %}
