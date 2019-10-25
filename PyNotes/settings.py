@@ -1,4 +1,5 @@
 import os, sys
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -114,3 +115,4 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 LOGIN_REDIRECT_URL = '../../categories/'
 LOGOUT_REDIRECT_URL = '../../'
+django_heroku.settings(locals())
