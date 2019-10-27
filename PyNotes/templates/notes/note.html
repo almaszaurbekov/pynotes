@@ -44,7 +44,7 @@
             {% csrf_token %}
             <div class="row form-group">
                 <div class="col-md-12 text-right mb-2">
-                    <a href="#" class="btn btn-danger">Удалить</a>
+                    <a href="{% url 'deleteNote' category_id=category.id note_id=note.id is_success=False %}" class="btn btn-danger">Удалить</a>
                     <button id="quill-btn" class="btn btn-success" type="submit">Сохранить</button>
                 </div>
                 <input type="hidden" class="quill-data" name="quillData">

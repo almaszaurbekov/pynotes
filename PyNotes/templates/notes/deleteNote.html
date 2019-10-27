@@ -1,0 +1,36 @@
+{% extends "notes/_layout.html" %}
+{% load static %}
+{% block content %}
+<div class="container" style="padding-top:50px;padding-bottom:50px;">
+    <form action="{% url 'deleteNote' category_id=category.id note_id=note.id is_success=False %}" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-4"></div>
+            <div class="form-group col-md-4">
+                <div class="row">
+                    <div class="col-md-12 text-left">
+                        <a href="{% url 'categoryById' category_id=category.id %}">Вернуться</a>
+                        <hr>
+                        <label for="name">Категория:</label>
+                        <input name="name" type="text" class="form-control" value="{{ category }}" required readonly>
+                        <br>
+                        <label for="name">Титул:</label>
+                        <input name="name" type="text" class="form-control" value="{{ note.title }}" required readonly>
+                        <br>
+                        <label for="user">Пользователь:</label>
+                        <input name="user" type="text" class="form-control" value="{{ user }}" required readonly>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="submit" value="Удалить" class="btn btn-danger form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-4"></div>
+        </div>
+    </form>
+</div>
+{% endblock %}
