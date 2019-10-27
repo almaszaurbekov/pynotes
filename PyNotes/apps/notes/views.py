@@ -44,6 +44,16 @@ def createCategory(request):
         return redirect('categories')
 
 @login_required
+def deleteCategory(request, category_id):
+    if request.method == 'GET':
+        category = Category.objects.get(id=category_id)
+        notes = Note.objects.filter(category=category_id)
+        return render(request, 'notes/deleteCategory.html', { 'notes' : notes, 'category' : category })
+    else:
+        category = Category.objects.filter(id=category_id).delete()
+        return redirect('categories')
+
+@login_required
 def createNote(request, category_id):
     if request.method == 'GET':
         category = Category.objects.get(id=category_id)
@@ -55,6 +65,17 @@ def createNote(request, category_id):
         return redirect('categoryById', category_id=request.POST.get('category'))
 
 @login_required
+def deleteNote(request, category_id, note_id, is_success):
+    if request.method == 'GET':
+        category = Category.objects.get(id=category_id)
+        note = Note.objects.get(id=note_id)
+        return render(request, 'notes/deleteNote.html', { 'note' : note, 'category' : category })
+    else:
+        category = Category.objects.get(id=category_id)
+        note = Note.objects.filter(id=note_id).delete()
+        return redirect('categoryById', category_id=category_id)
+
+@login_required
 def quillText(request):
     if request.method == 'POST':
         quill = request.POST.get('quillData')
@@ -62,7 +83,7 @@ def quillText(request):
         category_id = request.POST.get('category')
 
         note_id = request.POST.get('note')
-        note = Note.objects.get(id=note_id);
+        note = Note.objects.filter(id=note_id);
 
-        instance = Note.objects.update(title=note.title, text=quill, category=note.category, user=request.user)
+        instance = note.update(text=quill)
         return redirect('noteById', category_id, note_id, True)

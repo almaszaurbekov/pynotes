@@ -27,7 +27,7 @@
     <hr>
     <div class="row">
         <div class="col-md-12 text-right mb-2">
-            <a href="#" class="btn btn-danger"> Удалить категорию</a>
+            <a href="{% url 'deleteCategory' category_id=category.id %}" class="btn btn-danger"> Удалить категорию</a>
             <a href="{% url 'createNote' category_id=category.id %}" class="btn btn-success"> Новая заметка</a>
         </div>
         {% for note in notes %}
